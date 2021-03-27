@@ -1,0 +1,52 @@
+{
+  "students": [
+    {
+      "id": "100299",
+      "name": "Muriuki Lewis Maina",
+      "email": "lewis.muriuki@strathmore.edu",
+      "phonenumber": "+254 789152368",
+      "form": "3",
+      "form_class": "K"
+    },
+    {
+      "id": "17689",
+      "name": "Lewis Maina Muriuki",
+      "email": "muriukimainalewis@gmail.com",
+      "phonenumber": "+254 714308029",
+      "form": "4",
+      "form_class": "L"
+    },
+    {
+      "id": "18405",
+      "name": "Andrew Njuguna Muriuki",
+      "email": "andrewnjuguna@gmail.com",
+      "phonenumber": "+254 722839388",
+      "form": "1",
+      "form_class": "D"
+    },
+    {
+      "name": "Bumblebee",
+      "email": "transformers@gmail.com",
+      "phonenumber": "2021",
+      "form": "4",
+      "form_class": "C",
+      "id": "25mUjR4"
+    },
+    {
+      "name": "rah",
+      "email": "jah",
+      "phonenumber": "778",
+      "form": "2",
+      "form_class": "B",
+      "id": "-Vn_wKH"
+    },
+    {
+      "name": "dsaj",
+      "email": "kjbnk",
+      "phonenumber": "jnjkn",
+      "form": "4",
+      "form_class": "D",
+      "id": "iR7LWWR"
+    }
+  ]
+}
