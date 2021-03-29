@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import AddStudent from "./components/AddStudent";
+import StudentForm from "./components/StudentForm";
 import Table from "./components/Table";
 import { useState, useEffect } from 'react'
 
@@ -18,7 +18,6 @@ const App = () => {
     const fetchStudents = async () =>{
       const res = await fetch('http://localhost:5000/students')
       const data = await res.json()
-      console.log(data)
      return data
     }
     
@@ -38,7 +37,7 @@ const App = () => {
       const newStudent = await res.json()
       setStudents([...students,newStudent])
     }
-
+    
     //Delete Task
     const deleteStudent = async (id) =>{
         await fetch(`http://localhost:5000/students/${id}`,{
@@ -50,20 +49,37 @@ const App = () => {
         )
       }
 
-    //Update Student Details
-    const updateStudent = async (id) =>{
+    //Fetch Student Details
+    const fetchStudent = async (id) =>{
       setShowAddStudent(true)
       const res = await fetch(`http://localhost:5000/students/${id}`)
       const studentFromServer = await res.json() 
       setStudent(studentFromServer) 
     }
-      
+
+    //Update Student Details
+    const updateStudent = async (id,student) =>{
+      const res = await fetch(`http://localhost:5000/students/${id}`,{
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(student)
+      })
+    
+      const newStudentDetails = await res.json()
+      setStudent([...student,newStudentDetails])
+    }
+    const closeAddStudent = () => {
+      setStudent('');
+      setShowAddStudent(false);
+    }
 
   return (
     <div className="container">
-        <Header showAddStudent={showAddStudent}  onAdd={() =>setShowAddStudent(!showAddStudent)} />
-        {showAddStudent && <AddStudent student = {student} onAdd={addStudent}/> }
-        <Table onUpdate={updateStudent} onDelete={deleteStudent} students={students} />
+        <Header showAddStudent={showAddStudent}  onAdd={() =>setShowAddStudent(true)} onClose={closeAddStudent}/>
+        {showAddStudent && <StudentForm student = {student} onUpdate={updateStudent} onAdd={addStudent}/> }
+        <Table onUpdate={fetchStudent} onDelete={deleteStudent} students={students} />
 
     </div>
   );

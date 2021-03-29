@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import Student from './Student'
 
-const AddStudent = ({onAdd,student}) => {
+const StudentForm = ({onAdd,student}) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phonenumber, setPhonenumber] = useState('')
     const [form, setForm] = useState('')
     const [form_class, setForm_class] = useState('')
-
 
 const onSubmit = (e) =>{
     e.preventDefault()
@@ -44,26 +42,26 @@ const onSubmit = (e) =>{
 
     return (
         <form className = 'add-form' onSubmit={onSubmit}>
-            <h2>Add New Student</h2>
+            <h2> {student !== '' ? 'Update Student Details' :"Add New Student"}</h2>
             <div className = 'form-control'>
                 <label>Name</label>
-                <input value = {student ? student.name : name} onChange = {(e) => setName(e.target.value)} type = "text" placeholder = "Firstname" />
+                <input value = {student !== '' ? student.name : name} onChange = {(e) => setName(e.target.value)} type = "text" placeholder = "name" />
             </div>
 
             <div className = 'form-control'>
                 <label>Email</label>
-                <input value = {student ? student.email : email} onChange = {(e) => setEmail(e.target.value)} type = "text" placeholder = "Email" />
+                <input value = {student !== '' ? student.email : email} onChange = {(e) => setEmail(e.target.value)} type = "text" placeholder = "Email" />
             </div>
 
 
             <div className = 'form-control'>
                 <label>Phonenumber</label>
-                <input value = {student ? student.phonenumber : phonenumber} onChange = {(e) => setPhonenumber(e.target.value)} type = "text" placeholder = "Phonenumber" />
+                <input value = {student !== '' ? student.phonenumber : phonenumber} onChange = {(e) => setPhonenumber(e.target.value)} type = "text" placeholder = "Phonenumber" />
             </div>
 
             <div className = 'form-control'>
                 <label>Form</label>
-                <select value = {student ? student.form : form} onChange = {(e) => setForm(e.target.value)}>
+                <select value = {student !== '' ? student.form : form} onChange = {(e) => setForm(e.target.value)}>
                     <option value="" selected disabled>Choose Form</option>    
                     <option value = "1">1</option>
                     <option value = "2">2</option>
@@ -74,7 +72,7 @@ const onSubmit = (e) =>{
 
             <div className = 'form-control'>
                 <label>Class</label>
-                <select value = {student ? student.form_class : form_class} onChange = {(e) => setForm_class(e.target.value)}>
+                <select value = {student !== '' ? student.form_class : form_class} onChange = {(e) => setForm_class(e.target.value)}>
                     <option value="" selected disabled>Choose Class</option>    
                     <option value="A">A</option>
                     <option value="B">B</option>
@@ -83,9 +81,9 @@ const onSubmit = (e) =>{
                 </select>
             </div>
 
-            <input type = "submit" value = {student ? 'Update Student Details' :"Add Student"} className = "btn btn-block" />
+            <input type = "submit" value = {student !== '' ? 'Update Student Details' :"Add Student"} className = "btn btn-block" />
         </form>
     )
 }
 
-export default AddStudent
+export default StudentForm
