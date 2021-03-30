@@ -16,9 +16,10 @@ const App = () => {
     },[])
     
     const fetchStudents = async () =>{
-      const res = await fetch('http://localhost:5000/students')
+      const res = await fetch('http://127.0.0.1:8000/api/v1/students')
       const data = await res.json()
-     return data
+      console.log(data)
+      return data
     }
     
     //Show Add Task
@@ -26,7 +27,7 @@ const App = () => {
 
     //Add Task
     const addStudent = async (student) =>{
-      const res = await fetch('http://localhost:5000/students/',{
+      const res = await fetch('http://127.0.0.1:8000/api/v1/students/',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -40,7 +41,7 @@ const App = () => {
     
     //Delete Task
     const deleteStudent = async (id) =>{
-        await fetch(`http://localhost:5000/students/${id}`,{
+        await fetch(`http://127.0.0.1:8000/api/v1/students/${id}`,{
           method: 'DELETE'
         })
 
